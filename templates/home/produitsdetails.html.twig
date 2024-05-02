@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/produitsdetails.css') }}">
+{% endblock %}
+
+{% block title %}{{produit.nom }}{% endblock %}
+
+{% block body %}
+	<h1>{{ produit.nom }}</h1>
+		<div class="produit">
+			{{produit.nom}} <br><br>
+			{{ produit.description }}
+			<img src={{ produit.image }} alt="{{ produit.nom }}" style="width: 400px;"> <br><br>
+			<br><br>
+                    {% if produit.stock >= 1 %}
+                        en store
+                    {% else %}
+                        vendu
+                    {% endif %}
+            <br><br>
+		</div>
+        <div class="comment">
+                <p>Commentaires</p>
+                {% for commentaire in commentaires %}
+                    {{commentaire.titre}}
+                        <p>
+                            {{commentaire.contenu}}
+                        </p>
+                {% endfor %}
+                <div class="Form">
+                    <h2>commentaire</h2>
+                    <form action="{{ path('produitsdetails', {'produitId': produit.id} ) }}" method="post">
+                        {{ form_start(commentaireForm) }}
+                        {{ form_widget(commentaireForm) }}
+                        <button type="submit">Post</button>
+                        {{ form_end(commentaireForm) }}
+                    </form>
+                </div>
+        
+        
+            </div>
+        </div>
+	
+
+
+
+{% endblock %}

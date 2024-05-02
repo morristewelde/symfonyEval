@@ -1,0 +1,18 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block body %}
+    <main class="container">
+        <h1>Modifier mon produit</h1>
+        <a href="{{ path('admin_produits') }}" class="btn btn-secondary">Retour</a>
+
+        {{ form_start(produitForm) }}
+        {{ form_row(produitForm.nom, {'label': 'Nom du produit', 'value': produit.nom}) }}
+        {{ form_row(produitForm.description, {'label': 'Description du produit', 'value': produit.description}) }}
+        {{ form_row(produitForm.image, {'label': 'Image du produit', 'value': produit.image}) }}
+        {{ form_row(produitForm.stock, {'label': 'Stock du produit', 'value': produit.stock}) }}
+        
+        <input type="submit" class="btn btn-primary" value="Modifier">
+        
+        {{ form_end(produitForm) }}
+    </main>
+{% endblock %}

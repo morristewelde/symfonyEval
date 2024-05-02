@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Produits{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/produits.css') }}">
+{% endblock %}
+
+{% block body %}
+    <h1>List of All cars available</h1>
+    <div  class="product-container" >
+        {% for produit in produits %}
+            <a href="{{ path('produitsdetails', {'produitId': produit.id}) }}">
+                <div class="product-card">
+                    <h2>{{ produit.nom }}</h2>
+                    <p>{{ produit.description }}</p>
+                    <img src="{{ produit.image }}" alt="{{ produit.nom }}" style="width: 250px;">
+                    <br>
+                    {% if produit.stock >= 1 %}
+                        en store
+                    {% else %}
+                        vendu
+                    {% endif %}
+                    <br>
+                </div>
+            </a> 
+        {% endfor %}
+    </div>
+{% endblock %}

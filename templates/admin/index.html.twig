@@ -1,0 +1,18 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/adminhome.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="example-wrapper">
+    <h1>Welcome {{ controller_name }}! ✅</h1>
+
+    <div class="produit">
+        <a href="{{ path('admin_produits') }}">produits</a>
+        <a href="{{ path('adminCommentaire') }}">commentaires</a>
+    </div>
+</div>
+{% endblock %}
